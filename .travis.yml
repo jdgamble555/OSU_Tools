@@ -1,0 +1,6 @@
+language: cpp
+compiler:
+  - gcc
+# Change this to your needs
+script: g++ input_tools.cpp -c -o input_tools.o
+script: g++ word_tools.cpp -c -o word_tools.o

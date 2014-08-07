@@ -11,7 +11,9 @@
 #include <string>
 #include <fstream>
 #include <ctime>
+#include <cstdlib>
 #include "input_tools.h"
+#include "word_tools.h"
 
 using std::string;
 using std::cout;
