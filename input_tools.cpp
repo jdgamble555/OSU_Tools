@@ -2,7 +2,7 @@
 ** Filename: input_tools.cpp
 ** Date: 7/15/2014
 ** Updated: 7/31/2014
-** Version: 2.4.0
+** Version: 2.4.1
 ** Description: Input Integer functions
 ** Contributors: Michael Hoppes
 **               Jonathan Gamble
@@ -16,8 +16,10 @@
 // for atoi()
 #include <cstdlib>
 #include "input_tools.h"
+#include <sstream>
 
 using std::string;
+using std::stringstream;
 
 namespace input_tools {
 
@@ -273,12 +275,27 @@ namespace input_tools {
 
   int str_to_int(string s) {
     // string to integer
-    return atoi(s.c_str());
+    //return atoi(s.c_str());
+    int i;
+    stringstream(s) >> i;
+    return i;
   }
 
   int char_to_int(char c) {
     // character to integer
     return atoi(string(1, c).c_str());
+  }
+
+  string double_to_str(double d) {
+    // double to string
+    stringstream s;
+    s << d;
+    return s.str();
+  }
+
+  double str_to_double(string s) {
+    // string to double
+    return atof(s.c_str());
   }
 
   string str_to_lower(string word) {

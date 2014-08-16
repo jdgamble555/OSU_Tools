@@ -4,7 +4,7 @@
 ** Filename: input_tools.h
 ** Date: 7/15/2014
 ** Updated: 7/29/2014
-** Version: 2.4.0
+** Version: 2.4.1
 ** Description: Input Integer functions
 ** Contributors: Michael Hoppes
 **               Jonathan Gamble
@@ -43,6 +43,8 @@ namespace input_tools {
   int char_to_int(char c);
   char int_to_char(int i);
   char str_to_char(std::string s);
+  double str_to_double(std::string s);
+  std::string double_to_str(double d);
   std::string str_to_lower(std::string word);
   std::string str_to_upper(std::string word);
 
@@ -56,7 +58,7 @@ doing error checking. You can control how
 the errors appear (see below), and it automatically
 prints the error and re-asks the question that you
 input. This makes it incredibly easy to reuse
-without having to rewrite the same code with 
+without having to rewrite the same code with
 std::cin (or cin.getline) over and over.  It
 is incredibly powerful. Give it a try!
 **************************************************
@@ -65,13 +67,13 @@ INCLUDING input_tools
 **************************************************
 Loading the tool
 
-  #include "input_tools.h"
+#include "input_tools.h"
 
-  using namespace input_tools;
+using namespace input_tools;
 
 or
 
-  using input_tools::function_name;
+using input_tools::function_name;
 
 remember to compile the input_tools.cpp file
 in your program
@@ -80,66 +82,66 @@ FUNCTION input_string()
 **************************************************
 inputting a string
 
-  string input;
+string input;
 
-  input = input_string("Please enter a string");
+input = input_string("Please enter a string");
 
 FUNCTION input_alpha_str()
 **************************************************
 inputting an alpha string (a-z) or (A-Z)
 
-  string input
+string input
 
-  input = input_alpha_str("Please enter a word");
+input = input_alpha_str("Please enter a word");
 
 or with a maximum length of 7 characters
 
-  input = input_alpha_str("Please enter a word", 7);
+input = input_alpha_str("Please enter a word", 7);
 
 upper-case / lower-case versions:
 
-  input_alpha_str_lc()
-  input_alpha_str_uc()
+input_alpha_str_lc()
+input_alpha_str_uc()
 
 FUNCTION input_c_string()
 **************************************************
 inputting a c_string or c character array
 
-  const int STR_SIZE = 20;
-  char str[STR_SIZE];
-  input_c_string("Please enter a string", str, STR_SIZE);
+const int STR_SIZE = 20;
+char str[STR_SIZE];
+input_c_string("Please enter a string", str, STR_SIZE);
 
 FUNCTION input_integer()
 **************************************************
 inputting an integer between INT_MAX and INT_MIN
 
-  int i;
-  i = input_integer("Please enter an integer");
+int i;
+i = input_integer("Please enter an integer");
 
 or with a certain range between 10 and 25
 
-  int i;
-  i = input_integer("Please enter an integer, 10, 25);
+int i;
+i = input_integer("Please enter an integer, 10, 25);
 
 FUNCTION input_yes_no()
 **************************************************
 inputting a yes or no question (yes, no, y, n)
 
-  do {
-  // code
-  } while (input_yes_no("Play again? (y/n)"));
+do {
+// code
+} while (input_yes_no("Play again? (y/n)"));
 
 FUNCTION input_alpha_char()
 **************************************************
 inputting an alpha character (a-z) or (A-Z)
 
-  char c;
-  c = input_alpha_char("Please enter a letter");
+char c;
+c = input_alpha_char("Please enter a letter");
 
 upper-case / lower-case versions:
 
-  c = input_alpha_char_uc("Please enter a letter");
-  c = input_alpha_char_lc("Please enter a letter");
+c = input_alpha_char_uc("Please enter a letter");
+c = input_alpha_char_lc("Please enter a letter");
 
 ERROR HANDLING AND MESSAGE OUTPUT
 **************************************************
@@ -150,23 +152,23 @@ that is your own function to customize the output.
 declare your function prototype with a string and bool
 parameters returning void
 
-  void my_function(string msg, bool is_error_msg);
+void my_function(string msg, bool is_error_msg);
 
 add your function name as the last parameter to the input
 function of your choice
 
-  int i = input_integer("Please enter an integer", my_function);
+int i = input_integer("Please enter an integer", my_function);
 
 create your own function matching the prototype above
 and adding an if statement with your bool variable
 to differential between the error and the input message
 
-  void my_function(string msg, bool is_error_msg) {
-    if (is_error_msg)
-      cout << "WOW, you messed up! " << msg << endl;
-    else
-      cout << msg << endl << " : ";
-  }
+void my_function(string msg, bool is_error_msg) {
+if (is_error_msg)
+cout << "WOW, you messed up! " << msg << endl;
+else
+cout << msg << endl << " : ";
+}
 
 output
 
@@ -184,27 +186,35 @@ conversions simple. They return the converted type.
 
 integer to string
 
-  int_to_str(my_int)
+int_to_str(my_int)
 
 integer to character
 
-  int_to_char(my_int)
+int_to_char(my_int)
 
 character to string
 
-  char_to_str(my_char)
+char_to_str(my_char)
 
 character to integer
 
-  char_to_int(my_char)
+char_to_int(my_char)
 
 string to integer
 
-  str_to_int(my_str)
+str_to_int(my_str)
 
 string to character
 
-  str_to_char(my_str)
+str_to_char(my_str)
+
+double to string
+
+double_to_str(my_double)
+
+string to double
+
+str_to_double(my_str)
 
 *************************************************/
 #endif // INPUT_TOOLS_INCLUDED
