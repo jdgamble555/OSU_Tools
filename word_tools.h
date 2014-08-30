@@ -73,5 +73,8 @@ namespace word_tools {
   // see if three characters are the same
   bool are_equal(char a, char b, char c);
 
+  // find and replace (string, search, replace)
+  bool replace(std::string &str, const std::string &from, const std::string &to);
+
 }
 #endif // WORD_TOOLS_INCLUDED

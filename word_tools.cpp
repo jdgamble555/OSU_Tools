@@ -116,4 +116,13 @@ namespace word_tools {
     return (a == b && b == c);
   }
 
+  bool replace(string &str, const string &from, const string &to) {
+    // find and replace (string, search, replace)
+    size_t start_pos = str.find(from);
+    if (start_pos == string::npos)
+      return false;
+    str.replace(start_pos, from.length(), to);
+    return true;
+  }
+
 }
